@@ -4,8 +4,8 @@ on:
   - push
 
 jobs: 
-    name: ascii script
     first_job: 
+        name: ascii script
         runs-on: ubuntu-latest
         steps:
             - name: Checkout Code
