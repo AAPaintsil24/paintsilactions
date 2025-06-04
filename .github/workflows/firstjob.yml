@@ -4,15 +4,14 @@ on:
   - push
 
 jobs: 
-    first_job:
-        name: paintsil_actions 
+    albertjob: 
         runs-on: ubuntu-latest
         steps:
-            - name: Welcome Message
-              run: echo "My first GitHu Actions Job"
+            - name: Checkout Code
+              uses: actions/checkout@v4
 
-            - name: List Files 
-              run: ls 
-
-            - name: Show present working directory
-              run: pwd
+            - name: List and Read files
+              run: |
+                echo "My first GitHu Actions Job"
+                ls -1
+                cat dockerfile
