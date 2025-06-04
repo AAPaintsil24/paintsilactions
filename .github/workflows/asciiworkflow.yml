@@ -16,5 +16,5 @@ jobs:
 
             - name: Execute Shell Script
               run: |
-                chmod u+x ./ascii-script.sh
-                ./ascii-script.sh
+                chmod u+x ./asciiscript.sh
+                ./asciiscript.sh
