@@ -15,4 +15,4 @@ jobs:
               run: ls 
 
             - name: Read file 
-              run: cat dockerfile
+              run: cat dockerfile .github/workflows/firstjob.yml
