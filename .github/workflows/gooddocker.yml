@@ -23,7 +23,6 @@ jobs:
     - name: Docker Publish 
       run: docker push ${{ env.CONTAINER_REGISTRY }}/${{ vars.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:latest
 
-      
   docker_deploy:
     needs: docker_build
     runs-on: ubuntu-latest 
