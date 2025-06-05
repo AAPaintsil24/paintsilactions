@@ -26,6 +26,6 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
       - name: Docker Login
-        run: docker login --username=albertarko --password=Qwer5ty6&
+        run: docker login --username=albertarko --password="Qwer5ty6&"
       - name: Docker Run
         run: docker run -d -p 8080:80 docker.io/albertarko/resume-app:latest
