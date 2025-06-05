@@ -14,11 +14,11 @@ jobs:
       run: docker build -t docker.io/albertarko/resume-app:latest .
 
     - name: Docker Login
-      run: docker login --username=albertarko --password=dckr_pat_1cxrYa3FhR-MdnSjy5Sf7BaXpgs
+      run: docker login --username=albertarko --password=Qwer5ty6&
 
     - name: Docker Publish 
       run: docker push docker.io/albertarko/resume-app:latest
-      
+
 
   docker_deploy:
     needs: docker_build
@@ -27,6 +27,6 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
       - name: Docker Login
-        run: docker login --username=albertarko --password=dckr_pat_1cxrYa3FhR-MdnSjy5Sf7BaXpgs
+        run: docker login --username=albertarko --password=Qwer5ty6&
       - name: Docker Run
         run: docker run -d -p 8080:80 docker.io/albertarko/resume-app:latest
