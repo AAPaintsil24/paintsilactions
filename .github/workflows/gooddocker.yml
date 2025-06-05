@@ -18,6 +18,7 @@ jobs:
 
     - name: Docker Publish 
       run: docker push docker.io/albertarko/resume-app:latest
+      
 
   docker_deploy:
     needs: docker_build
