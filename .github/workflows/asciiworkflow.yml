@@ -1,20 +1,26 @@
-# name: ASCII Workflow
+name: ASCII Workflow
 
-# on:
-#   - push
+on:
+  - push
 
-# jobs: 
-#     first_job: 
-#         name: ascii script
-#         runs-on: ubuntu-latest
-#         steps:
-#             - name: Checkout Code
-#               uses: actions/checkout@v4
+jobs: 
+    ASCII: 
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v4
 
-#             - name: print current directory
-#               run: pwd
+            - name: Install Cowsay Program
+              run: sudo apt-get install cowsay -y
 
-#             - name: Execute Shell Script
-#               run: |
-#                 chmod u+x ./asciiscript.sh
-#                 ./asciiscript.sh
+            - name: Execute Cowsay Command 
+              run: cowsay -f dragon "Run for cover, I am a DRAGON......RAWR" >> dragon.txt
+
+            - name: Test file exists 
+              run: grep -i "dragon" dragon.txt
+
+            - name: Read File
+              run: cat dragon.txt 
+
+            - name: List Repo files 
+              run: ls -ltra
