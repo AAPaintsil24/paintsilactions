@@ -1,18 +1,20 @@
 name: Docker Workflow
 
 on:
-  push:
-     branches:
-        - main
-     paths:
-        - css/**
-        - images/**
-        - index.html
-        - Dockerfile
-  pull_request:
-    types:
-      - closed
-      - opened 
+#   push:
+#      branches:
+#         - main
+#      paths:
+#         - css/**
+#         - images/**
+#         - index.html
+#         - Dockerfile
+#   pull_request:
+#     types:
+#       - opened
+#       - closed 
+  schedule:
+    - cron:  "*/5 * * * *"
   workflow_dispatch:
 
 
