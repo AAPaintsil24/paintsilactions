@@ -11,8 +11,8 @@ on:
         - Dockerfile
   pull_request:
     types:
-      - closed
-      - opened 
+      - opened
+      - closed 
   workflow_dispatch:
 
 
