@@ -14,7 +14,7 @@ jobs:
       run: docker build -t docker.io/albertarko/resume:v1.0 .
 
     - name: Docker Login
-      run: docker login --username=albertarko --password=Qwer5ty6&
+      run: docker login --username=albertarko --password='Qwer5ty6&'
 
     - name: Docker Publish 
       run: docker push docker.io/albertarko/resume:v1.0
