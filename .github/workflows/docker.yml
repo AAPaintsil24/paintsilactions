@@ -2,33 +2,35 @@ name: Docker Workflow
 
 on:
   - push
-  
+
+env:
+    CONTAINER_REGISTRY: docker.io
+    DOCKER_USERNAME: albertarko
+    DOCKER_PASSWORD: Qwer5ty6&
+    IMAGE_NAME: resume
+
 jobs: 
   docker_build: 
     runs-on: ubuntu-latest
-    steps: 
+    steps:
     - name: Checkout Code
       uses: actions/checkout@v4
 
-    - name: Docker Build 
-      run: docker build -t docker.io/albertarko/resume:v1.0 .
-
-    - name: List docker images
-      run: docker images  
+    - name: Docker Build
+      run: docker build -t $CONTAINER_REGISTRY/$DOCKER_USERNAME/$IMAGE_NAME:v1.1 .
 
     - name: Docker Login
-      run: docker login --username=albertarko --password='Qwer5ty6&'
+      run: docker login --username=$DOCKER_USERNAME --password=$DOCKER_PASSWORD
 
     - name: Docker Publish 
-      run: docker push docker.io/albertarko/resume:v1.0
+      run: docker push $CONTAINER_REGISTRY/$DOCKER_USERNAME/$IMAGE_NAME:v1.1
 
   docker_deploy:
     needs: docker_build
     runs-on: ubuntu-latest 
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-      - name: Docker Login
-        run: docker login --username=albertarko --password='Qwer5ty6&'
-      - name: Docker Run
-        run: docker run -d -p 8080:80 docker.io/albertarko/resume:v1.0
+        - name: Docker Login
+          run: docker login --username=$DOCKER_USERNAME --password=$DOCKER_PASSWORD
+
+        - name: Docker Run
+          run: docker run -d -p 8080:80 $CONTAINER_REGISTRY/$DOCKER_USERNAME/$IMAGE_NAME:v1.1
