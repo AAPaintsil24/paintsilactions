@@ -13,8 +13,8 @@ on:
 #     types:
 #       - opened
 #       - closed 
-  schedule:
-    - cron:  "*/5 * * * *"
+  # schedule:
+  #   - cron:  "*/5 * * * *"
   workflow_dispatch:
 
 
