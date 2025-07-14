@@ -46,5 +46,7 @@ jobs:
        with:
           username: ${{ inputs.username  }}
           password: ${{ secrets.password }}
+
+          
      - name: Docker Deploy
        run: docker run -d -p 8080:80 ${{ env.CONTAINER_REGISTRY }}/${{ inputs.username }}/${{ env.IMAGE_NAME }}:latest
