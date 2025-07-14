@@ -10,15 +10,18 @@ jobs:
     uses: ./.github/workflows/reusable.yml
     with:
       environment: dev
+      docker_username: ${{ vars.DOCKER_USERNAME }}
 
   deploy_staging:
     needs: deploy_dev
     uses: ./.github/workflows/reusable.yml
     with:
       environment: staging
+      docker_username: ${{ vars.DOCKER_USERNAME }}
 
   deploy_prod:
     needs: deploy_staging
     uses: ./.github/workflows/reusable.yml
     with:
       environment: production
+      docker_username: ${{ vars.DOCKER_USERNAME }}
