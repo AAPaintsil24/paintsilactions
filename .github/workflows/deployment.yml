@@ -1,4 +1,4 @@
-name: Deploy to various Environments
+name: Deploy to Environments
 
 on:
   push:
