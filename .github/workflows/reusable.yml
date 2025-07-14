@@ -12,10 +12,6 @@ on:
       password:
         required: true
         type: string
-
-
-        
-
 env:
   CONTAINER_REGISTRY: docker.io
   IMAGE_NAME: resume
@@ -34,7 +30,7 @@ jobs:
          uses: docker/login-action@v3
          with:
           username: ${{ inputs.username  }}
-          password: ${{ iputs.password }}
+          password: ${{ inputs.password }}
       
 
       - name: Docker Publish 
