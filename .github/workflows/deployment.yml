@@ -11,6 +11,7 @@ jobs:
     with:
       environment: dev
       username: ${{ vars.DOCKER_USERNAME }}
+    secrets:
       password: ${{ secrets.DOCKER_PASSWORD }}
 
   deploy_staging:
@@ -19,6 +20,7 @@ jobs:
     with:
       environment: staging
       username: ${{ vars.DOCKER_USERNAME }}
+    secrets:
       password: ${{ secrets.DOCKER_PASSWORD }}
 
   deploy_prod:
@@ -27,4 +29,5 @@ jobs:
     with:
       environment: production
       username: ${{ vars.DOCKER_USERNAME }}
+    secrets:
       password: ${{ secrets.DOCKER_PASSWORD }}
