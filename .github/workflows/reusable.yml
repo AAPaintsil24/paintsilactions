@@ -10,6 +10,7 @@ on:
       password: 
         required: true
         type: string
+        default: ""
 
 
 permissions:
