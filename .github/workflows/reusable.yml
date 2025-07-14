@@ -1,3 +1,4 @@
+
 name: Deploy Workflow
 
 on:
@@ -6,42 +7,23 @@ on:
       environment:
         required: true
         type: string
-      username:
-        required: true
-        type: string
-    secrets:
-      password:
-        required: true
 
 env:
   CONTAINER_REGISTRY: docker.io
   IMAGE_NAME: resume
 
-jobs: 
-  docker_build: 
+jobs:
+  docker_build:
     runs-on: ubuntu-latest
-    steps: 
+    steps:
       - name: Checkout Code
         uses: actions/checkout@v4
 
       - name: Docker Build
-        run: docker build -t ${{ env.CONTAINER_REGISTRY }}/${{ inputs.username }}/${{ env.IMAGE_NAME }}:latest .
+        run: docker build -t ${{ env.CONTAINER_REGISTRY }}/${{ vars.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:latest .
 
       - name: Docker Login
-        run: echo "${{ secrets.password }}" | docker login -u "${{ inputs.username }}" --password-stdin
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ vars.DOCKER_USERNAME }}" --password-stdin
 
-      - name: Docker Publish 
-        run: docker push ${{ env.CONTAINER_REGISTRY }}/${{ inputs.username }}/${{ env.IMAGE_NAME }}:latest
-
-  docker_deploy:
-    needs: docker_build
-    runs-on: ubuntu-latest 
-    steps:
-      - name: Docker Login
-        run: echo "${{ secrets.password }}" | docker login -u "${{ inputs.username }}" --password-stdin
-
-
-        
-      - name: Docker Deploy
-        run: |
-          docker run -d -p 8080:80 ${{ env.CONTAINER_REGISTRY }}/${{ inputs.username }}/${{ env.IMAGE_NAME }}:latest
+      - name: Docker Push
+        run: docker push ${{ env.CONTAINER_REGISTRY }}/${{ vars.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:latest
