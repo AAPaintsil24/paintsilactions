@@ -1,0 +1,24 @@
+name: Common Test Workflow
+
+on:
+  workflow_call:
+    secrets:
+      GITHUB_TOKEN:
+        required: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check Out Code
+        uses: actions/checkout@v4
+
+      - name: Install Dependencies
+        run: npm ci
+
+
+        
+
+      - name: Run Tests
+        run: npm test
