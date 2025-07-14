@@ -10,15 +10,18 @@ jobs:
     uses: ./.github/workflows/reusable.yml
     with:
       environment: dev
+      password: ${{ secrets.DOCKER_PASSWORD }}
 
   deploy_staging:
     needs: deploy_dev
     uses: ./.github/workflows/reusable.yml
     with:
       environment: staging
+      password: ${{ secrets.DOCKER_PASSWORD }}
 
   deploy_prod:
     needs: deploy_staging
     uses: ./.github/workflows/reusable.yml
     with:
       environment: production
+      password: ${{ secrets.DOCKER_PASSWORD }}
