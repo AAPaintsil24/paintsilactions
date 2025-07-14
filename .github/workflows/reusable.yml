@@ -8,6 +8,12 @@ on:
         type: string
         default: 'production'
 
+
+permissions:
+  id-token: write
+  contents: write
+  packages: write
+
 env:
     CONTAINER_REGISTRY: docker.io
     IMAGE_NAME: resume
