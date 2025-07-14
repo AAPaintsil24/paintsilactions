@@ -10,6 +10,7 @@ jobs:
     uses: ./.github/workflows/reusable.yml
     with:
       environment: dev
+      username: ${{ vars.DOCKER_USERNAME }}
       password: ${{ secrets.DOCKER_PASSWORD }}
 
   deploy_staging:
@@ -17,11 +18,12 @@ jobs:
     uses: ./.github/workflows/reusable.yml
     with:
       environment: staging
+      username: ${{ vars.DOCKER_USERNAME }}
       password: ${{ secrets.DOCKER_PASSWORD }}
-
   deploy_prod:
     needs: deploy_staging
     uses: ./.github/workflows/reusable.yml
     with:
       environment: production
+      username: ${{ vars.DOCKER_USERNAME }}
       password: ${{ secrets.DOCKER_PASSWORD }}
