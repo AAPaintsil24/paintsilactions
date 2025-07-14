@@ -40,6 +40,8 @@ jobs:
       - name: Docker Login
         run: echo "${{ secrets.password }}" | docker login -u "${{ inputs.username }}" --password-stdin
 
+
+        
       - name: Docker Deploy
         run: |
           docker run -d -p 8080:80 ${{ env.CONTAINER_REGISTRY }}/${{ inputs.username }}/${{ env.IMAGE_NAME }}:latest
